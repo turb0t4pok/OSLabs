@@ -34,7 +34,6 @@ TEST(FullIntegrationTest, CompleteScenario) {
     int minVal = 0, maxVal = 0;
     double avg = 0;
 
-    // Используем потоки как в main
     thread t1(findMinMax, cref(arr), ref(minVal), ref(maxVal));
     thread t2(computeAverage, cref(arr), ref(avg));
 
@@ -43,7 +42,6 @@ TEST(FullIntegrationTest, CompleteScenario) {
 
     replaceMinMaxWithAverage(arr, minVal, maxVal, avg);
 
-    // Проверка
     EXPECT_EQ(minVal, 5);
     EXPECT_EQ(maxVal, 100);
     EXPECT_DOUBLE_EQ(avg, 33.0);
